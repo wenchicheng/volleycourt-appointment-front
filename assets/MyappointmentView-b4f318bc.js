@@ -1,0 +1,1 @@
+import{_ as e,a0 as t,a9 as a,a2 as n,a6 as o}from"./index-ac92b338.js";import{V as s}from"./VContainer-b40a5f2d.js";const c={},r=o("h1",null,"MyAppointmentView",-1);function i(_,f){return t(),a(s,{class:"h-100 d-flex justify-center align-center"},{default:n(()=>[r]),_:1})}const d=e(c,[["render",i]]);export{d as default};
