@@ -70,11 +70,11 @@
   :style="{ backgroundColor: isScrolled ? 'rgba(224, 236, 246, 1)' : 'rgba(224, 236, 246, 0)' }"
   >
     <v-container class="d-flex align-center">
-      <a @click="handleToHome">
+      <router-link to="/">
         <v-app-bar-title>
           <img src="@/assets/logo-05.png" alt="一起來打排" style="height: 40px">
         </v-app-bar-title>
-      </a>
+      </router-link>
       <!-- <v-spacer></v-spacer> -->
     </v-container>
       <!-- 導航按鈕 -->
@@ -104,9 +104,6 @@ const dialog = ref(false)
 const { apiAuth } = useApi()
 const createSnackbar = useSnackbar()
 const router = useRouter()
-const handleToHome = () => {
-  router.push('/')
-}
 
 const user = useUserStore()
 
