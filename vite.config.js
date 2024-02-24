@@ -10,7 +10,7 @@ import { fileURLToPath, URL } from 'node:url'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: '/volleycourt-appointment-front',
+  base: '/volleycourt-appointment-front/',
   plugins: [
     vue({
       template: { transformAssetUrls }
