@@ -225,6 +225,7 @@ const schema = yup.object({
     .min(0, '開放名額不能小於0'),
   info: yup
     .array()
+    .max(3, '最多選三項')
     .of(yup.string().required('此欄位為必填'))
     .required('此欄位為必填'),
   height: yup

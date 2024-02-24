@@ -1,11 +1,11 @@
 <template>
   <div class="top-block"></div>
-  <div class="outline-all">
+  <div>
     <v-container
     class="h-100 d-flex justify-center align-center"
     :style="{ width: getContainerWidth() }">
       <v-row>
-        <v-col cols="6">
+        <v-col cols="12">
           <v-date-picker
           width="100%"
           elevation="0"
@@ -16,23 +16,37 @@
           ></v-date-picker>
         </v-col>
         <v-col v-for="appointment in appointments"
-        :key="appointment._id"
-        :cols="getCols()">
-        <v-card class="appointment-card">
-          <!-- <v-img :src="image" contain height="60" /> -->
-          <v-card-title>
-            {{ selectedDate.toLocaleDateString() }}
-            <!-- {{ new Date(date).toISOString().split('T')[0] }} -->
-          </v-card-title>
-          <v-card-subtitle>{{ appointment.begin + ' ~ ' + appointment.end }}</v-card-subtitle>
-
-          <v-chip style="white-space: pre;">{{ appointment.info }}</v-chip>
-
-          <v-card-actions class="text-center justify-center">
-            <v-btn color="primary" prepend-icon="mdi-cart" class="w-100" @click="addCart">預約</v-btn>
-          </v-card-actions>
-        </v-card>
+          :key="appointment._id"
+          :cols="getCols()"
+          class="cards">
+          <v-card class="appointment-card">
+            <v-row>
+              <!-- 左側佔三分之一 -->
+              <v-col cols="8">
+                <v-card-subtitle>
+                  {{ selectedDate.toLocaleDateString() }}
+                </v-card-subtitle>
+                <v-card-title>
+                  {{ appointment.begin + ' ~ ' + appointment.end }}
+                </v-card-title>
+                <v-card-text>
+                  <v-row>
+                    <v-col cols="auto" v-for="(infoItem, index) in appointment.info" :key="index" class="chips">
+                      <v-chip class="chip" variant="outlined">{{ infoItem }}</v-chip>
+                    </v-col>
+                  </v-row>
+                </v-card-text>
+              </v-col>
+              <!-- 右側佔四分之一 -->
+              <v-col cols="4" class="d-flex justify-center align-center" style="padding-right: 32px;">
+                <v-card-actions>
+                  <v-btn class="reserve-btn" @click="reserve">預約</v-btn>
+                </v-card-actions>
+              </v-col>
+            </v-row>
+          </v-card>
         </v-col>
+
       </v-row>
     </v-container>
   </div>
@@ -44,7 +58,6 @@ import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 // import AppointCard from '@/components/AppointCard.vue'
-import gsap from 'gsap'
 import { date } from 'yup'
 
 const { api } = useApi()
@@ -63,9 +76,6 @@ onMounted(async () => {
     })
     appointments.value.push(...data.result)
     await nextTick()
-    // 用 GSAP 動畫----------------------------------------
-    gsap
-      .to('.appointment-card', { opacity: 1, duration: 0.5 })
   } catch (error) {
     console.log(error)
     const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
@@ -97,14 +107,10 @@ const getContainerWidth = () => {
 
 const getCols = () => {
   const screenWidth = window.innerWidth
-  if (screenWidth >= 1200) {
-    return 4 // xl
-  } else if (screenWidth >= 960) {
-    return 3 // lg
-  } else if (screenWidth >= 600) {
-    return 6 // md
+  if (screenWidth >= 800) {
+    return 6 // lg
   } else {
-    return 12 // sm
+    return 12 // xs, sm, md
   }
 }
 
@@ -133,4 +139,50 @@ width: 100%;
 height: 64px;
 /* background-color: #fff; */
 }
+.appointment-card {
+  /* margin: 8px; */
+  /* padding: 8px; */
+  border-radius: 8px;
+  box-shadow:none;
+  background-color:rgb(190, 217, 237) ;
+
+}
+
+.v-card-title{
+  color: rgb(78, 141, 189);
+  font-size: 28px;
+}
+
+.v-card-subtitle{
+  color:rgb(66, 66, 66);
+  font-weight: 400;
+  padding-top: 20px;
+}
+.v-card-text{
+  padding-left: 20px;
+  padding-bottom: 24px;
+  padding-top: 8px;
+
+}
+
+.chips{
+  padding: 4px 8px;
+}
+
+.chip{
+  background-color: rgb(190, 217, 237);
+  border: 2px solid rgba(110, 171, 217,1);
+  color: rgb(78, 141, 189);
+  font-weight: 600;
+}
+.reserve-btn {
+  color: #fff;
+  height: 80px;
+  width: 80px;
+  background-color: rgba(110, 171, 217,1);
+  border-radius: 50%;
+  font-weight: bold;
+  font-size: 1.25rem; /* equivalent to .h6 class */
+}
+
 </style>

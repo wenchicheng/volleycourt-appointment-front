@@ -39,9 +39,9 @@ const routes = [
         }
       },
       {
-        path: 'myappointment',
-        name: 'Myappointment',
-        component: () => import('@/views/front/MyappointmentView.vue'),
+        path: 'reservation',
+        name: 'Reservation',
+        component: () => import('@/views/front/ReservationView.vue'),
         meta: {
           title: '一起來打排 | 我的預約',
           login: true,

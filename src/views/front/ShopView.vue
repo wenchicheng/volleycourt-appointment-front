@@ -61,18 +61,18 @@ onMounted(async () => {
 })
 
 // 設定container的寬度
-const getContainerWidth = () => {
-  const screenWidth = window.innerWidth
-  if (screenWidth >= 1200) {
-    return '70%'
-  } else if (screenWidth >= 960) {
-    return '80%'
-  } else if (screenWidth >= 600) {
-    return '85%'
-  } else {
-    return '90%'
-  }
-}
+// const getContainerWidth = () => {
+//   const screenWidth = window.innerWidth
+//   if (screenWidth >= 1200) {
+//     return '70%'
+//   } else if (screenWidth >= 960) {
+//     return '80%'
+//   } else if (screenWidth >= 600) {
+//     return '85%'
+//   } else {
+//     return '90%'
+//   }
+// }
 
 const getCols = () => {
   const screenWidth = window.innerWidth
