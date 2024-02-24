@@ -1,0 +1,1 @@
+import{_ as e,a0 as a,a9 as t,a2 as o,a6 as s}from"./index-7d7c6a37.js";import{V as c}from"./VContainer-5df97b43.js";const n={},r=s("h1",null,"AdminHomeView",-1);function i(_,f){return a(),t(c,{class:"h-100 d-flex justify-center align-center"},{default:o(()=>[r]),_:1})}const m=e(n,[["render",i]]);export{m as default};

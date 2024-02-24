@@ -1,0 +1,1 @@
+import{_ as e,a0 as a,a9 as t,a2 as s,a6 as r}from"./index-7d7c6a37.js";import{V as n}from"./VContainer-5df97b43.js";const o={},c=r("h1",null,"ReservationView",-1);function i(_,f){return a(),t(n,{class:"h-100 d-flex justify-center align-center"},{default:s(()=>[c]),_:1})}const u=e(o,[["render",i]]);export{u as default};
