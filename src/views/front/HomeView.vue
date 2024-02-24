@@ -77,12 +77,13 @@ const modules = [Navigation, Pagination, Autoplay, EffectFade]
   width: 100%;
   height: 100%;
   position: absolute;
-  background-color: transparent;
-  opacity: .4;
-  background-image: radial-gradient(#000 20%, transparent 10%), radial-gradient(#000 20%, transparent 10%);
-  background-size: 3px 3px;
+  /* opacity: .4; */
+  background-color: #ff6767;
+  /* background-color: transparent; */
+  /* background-image: radial-gradient(#000 20%, transparent 10%), radial-gradient(#000 20%, transparent 10%); */
+  /* background-size: 3px 3px;
   background-position: 0 0, 1.5px 1.5px;
-  background-repeat: repeat;
+  background-repeat: repeat; */
 }
 
 .mySwiper .swiper-button-next,
