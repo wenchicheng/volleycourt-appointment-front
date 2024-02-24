@@ -1,0 +1,1 @@
+import{_ as t,a0 as a,a9 as o,a2 as e,c as r,a6 as s}from"./index-b2e4658c.js";import{V as c}from"./VContainer-84f155e9.js";import{V as n}from"./VCol-46d4b33e.js";const _={},f=s("h1",{class:"text-center"},"預約管理",-1);function i(l,d){return a(),o(c,null,{default:e(()=>[r(n,{cols:"12"},{default:e(()=>[f]),_:1})]),_:1})}const u=t(_,[["render",i]]);export{u as default};
