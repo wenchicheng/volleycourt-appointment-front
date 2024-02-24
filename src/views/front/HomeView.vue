@@ -1,5 +1,6 @@
 <template>
 <div class="context">
+  <div class="overlay"></div>
   <swiper
     :spaceBetween="30"
     :effect="'fade'"
@@ -12,7 +13,6 @@
     class="mySwiper"
   >
   <swiper-slide>
-      <div class="overlay"></div>
       <video src="../../assets/video/volley_video_02.mp4" class="d-block" autoplay muted loop></video>
     </swiper-slide>
     <swiper-slide>
@@ -66,20 +66,22 @@ const modules = [Navigation, Pagination, Autoplay, EffectFade]
 }
 
 .swiper-slide video {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(.8);
-    }
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  scale: 1.2;
+  /* filter: brightness(0.8); */
+}
 
 .overlay {
   width: 100%;
   height: 100%;
   position: absolute;
-  /* opacity: .4; */
-  background-color: #ff6767;
-  /* background-color: transparent; */
+  opacity: .6;
+  background-color: #191e28;
+  mix-blend-mode:multiply;
+  z-index: 1000;
   /* background-image: radial-gradient(#000 20%, transparent 10%), radial-gradient(#000 20%, transparent 10%); */
   /* background-size: 3px 3px;
   background-position: 0 0, 1.5px 1.5px;

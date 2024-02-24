@@ -72,7 +72,7 @@
     <v-container class="d-flex align-center">
       <router-link to="/">
         <v-app-bar-title>
-          <img src="@/assets/logo-05.png" alt="一起來打排" style="height: 40px">
+          <img src="@/assets/logo-05.png" alt="一起來打排" class="bar-logo">
         </v-app-bar-title>
       </router-link>
       <!-- <v-spacer></v-spacer> -->
@@ -120,8 +120,8 @@ const navItems = computed(() => {
     { to: '/about', text: '場館介紹', show: true },
     { to: '/news', text: '最新消息', show: true },
     { to: '/appointment', text: '預約報名', show: true },
-    { to: '/myappointment', text: '我的預約', show: user.isLogin },
-    { to: '/shop', text: '排球選物', show: user.isLogin },
+    { to: '/reservation', text: '我的預約', show: user.isLogin },
+    { to: '/shop', text: '排球選物', show: true },
     { to: '/cart', text: '購物車', icon: 'mdi-cart', show: user.isLogin },
     { to: '/admin', text: '後台管理', show: user.isLogin && user.isAdmin }
   ]
@@ -194,6 +194,10 @@ const logout = async () => {
   /* height: 64px; */
   font-weight: 600;
   border-bottom: 2px solid rgb(110, 171, 217);
+}
+
+.bar-logo{
+ height: 40px;
 }
 .v-main::v-deep {
   /* 深度選擇器 */
