@@ -1,0 +1,1 @@
+import{ad as e,ai as a,aq as t,ak as r,an as s}from"./index-e30a2666.js";import{V as c}from"./VContainer-f01c952a.js";const n={},o=s("h1",null,"CartView",-1);function i(_,f){return a(),t(c,{class:"h-100 d-flex justify-center align-center"},{default:r(()=>[o]),_:1})}const u=e(n,[["render",i]]);export{u as default};
