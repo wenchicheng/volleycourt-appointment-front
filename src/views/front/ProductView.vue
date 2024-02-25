@@ -1,29 +1,48 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col cols="12">
-        <h1>{{ product.name }}</h1>
-      </v-col>
-      <v-col cols="12" md="6">
-        <v-img :src="product.image"></v-img>
-      </v-col>
-      <v-col cols="12" md="6">
-        <p>${{ product.price }}</p>
-        <p style="white-space: pre;">{{ product.description }}</p>
-        <v-form :disabled="isSubmitting" @submit.prevent="submit">
-          <v-text-field type="number" min="0" v-model.number="quantity.value.value" :error-messages="quantity.errorMessage.value"></v-text-field>
-          <v-btn type="submit" prepend-icon="mdi-cart" :loading="isSubmitting">加入購物車</v-btn>
-        </v-form>
-      </v-col>
-    </v-row>
-  </v-container>
+  <div class="top-block"></div>
+  <div style="border: 2px solid rgb(4, 0, 255);">
+    <v-container
+    class="h-100 d-flex justify-center align-center"
+      :style="{ width: getContainerWidth() }"
+      style="border: 2px solid #bc3636;"
+    >
+      <v-row>
+        <v-col cols="12">
+          <h1 style="color:rgb(26, 108, 163);">{{ product.name }}</h1>
+        </v-col>
+        <v-col cols="12" md="6">
+          <div class="mask d-flex justify-center align-center">
+            <v-img :src="product.image"></v-img>
+          </div>
+        </v-col>
+        <v-col cols="12" md="6" style="color:rgb(26, 108, 163);">
+          <h2>${{ product.price }}</h2>
+          <h3 style="white-space: pre;">{{ product.description }}</h3>
+          <v-form :disabled="isSubmitting" @submit.prevent="submit">
+            <v-text-field
+            type="number" min="0" label="數量" variant="outlined" rounded="pill" class="mt-8"
+            v-model.number="quantity.value.value"
+            :error-messages="quantity.errorMessage.value">
+            </v-text-field>
+            <v-btn
+            type="submit"
+            prepend-icon="mdi-cart" rounded="pill" size="x-large" block class="mt-4"
+            :loading="isSubmitting"
+            variant="outlined" height="56">
+              加入購物車
+            </v-btn>
+          </v-form>
+        </v-col>
+      </v-row>
+    </v-container>
+  </div>
   <v-overlay :model-value="!product.sell" class="align-center justify-center text-center" persistent>
     <v-row>
       <v-col cols="12">
         <h1 class="text-white text-h1 font-weight-medium">已下架</h1>
       </v-col>
       <v-col cols="12">
-        <v-btn to="/shop" color="rgb(110, 171, 217)" rounded="pill" size="x-large" class="font-weight-bold">所有商品</v-btn>
+        <v-btn to="/shop" color="rgb(110, 171, 217)" rounded="pill" size="x-large" class="font-weight-bold">回商品頁</v-btn>
       </v-col>
     </v-row>
   </v-overlay>
@@ -56,7 +75,7 @@ const product = ref({
 })
 
 const schema = yup.object({
-  quantity: yup.number().typeError('缺少數量').required('缺少數量').min(1, '數量最小為 1')
+  quantity: yup.number().typeError('格式錯誤 或 缺少數量').required('缺少數量').min(1, '數量最小為 1')
 })
 const { isSubmitting, handleSubmit } = useForm({
   validationSchema: schema,
@@ -126,4 +145,35 @@ onMounted(async () => {
     router.push('/')
   }
 })
+
+const getContainerWidth = () => {
+  const screenWidth = window.innerWidth
+  if (screenWidth >= 1200) {
+    return '70%'
+  } else if (screenWidth >= 960) {
+    return '80%'
+  } else if (screenWidth >= 600) {
+    return '85%'
+  } else {
+    return '90%'
+  }
+}
 </script>
+
+<style scoped>
+.outline-all * {
+  outline: 1px solid #e06969;
+}
+
+.top-block{
+width: 100%;
+height: 64px;
+/* background-color: #fff; */
+}
+.mask{
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  border-radius:2rem;
+}
+</style>

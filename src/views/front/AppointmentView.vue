@@ -1,10 +1,29 @@
 <template>
   <div class="top-block"></div>
-  <div>
+  <div style="border: 2px solid rgb(4, 0, 255);">
     <v-container
-    class="h-100 d-flex justify-center align-center"
-    :style="{ width: getContainerWidth() }">
+      class="h-100 d-flex justify-center align-center"
+      :style="{ width: getContainerWidth() }"
+      style="border: 2px solid #bc3636;"
+    >
       <v-row>
+        <v-col cols="12">
+          <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163);">預約報名</h1>
+        </v-col>
+        <v-col cols="12">
+          <v-expansion-panels
+            v-model="panel"
+            :readonly="readonly"
+            multiple
+          >
+            <v-expansion-panel>
+              <v-expansion-panel-title>Panel 1</v-expansion-panel-title>
+              <v-expansion-panel-text>
+                A
+              </v-expansion-panel-text>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
         <v-col cols="12">
           <v-date-picker
           width="100%"
@@ -46,7 +65,6 @@
             </v-row>
           </v-card>
         </v-col>
-
       </v-row>
     </v-container>
   </div>
@@ -65,6 +83,7 @@ const createSnackbar = useSnackbar()
 
 const appointments = ref([])
 const selectedDate = ref()
+const panel = ref([])
 
 // 把頁面上的資料取出來，在onMounted的時候才可以抓到頁面上DOM元素
 onMounted(async () => {

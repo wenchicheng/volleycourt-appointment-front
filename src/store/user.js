@@ -12,6 +12,7 @@ export const useUserStore = defineStore('user', () => {
   const account = ref('')
   const email = ref('')
   const cart = ref(0)
+  // cart = ref(0) 購物車總共有幾個商品
   const role = ref(UserRole.USER)
   // 和 controller 的 result 一樣
 

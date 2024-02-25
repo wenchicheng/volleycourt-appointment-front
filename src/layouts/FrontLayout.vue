@@ -82,7 +82,8 @@
   </v-app-bar>
 
   <v-main>
-    <RouterView></RouterView>
+    <RouterView :key="$route.path"></RouterView>
+    <!-- route 取資訊，router 操作 -->
   </v-main>
 </template>
 
@@ -123,6 +124,7 @@ const navItems = computed(() => {
     { to: '/reservation', text: '我的預約', show: user.isLogin },
     { to: '/shop', text: '排球選物', show: true },
     { to: '/cart', text: '購物車', icon: 'mdi-cart', show: user.isLogin },
+    { to: '/orders', text: '我的訂單', icon: 'mdi-list', show: user.isLogin },
     { to: '/admin', text: '後台管理', show: user.isLogin && user.isAdmin }
   ]
 })

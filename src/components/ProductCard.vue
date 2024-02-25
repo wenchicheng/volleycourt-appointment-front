@@ -1,5 +1,5 @@
 <template>
-  <v-card class="product-card">
+    <v-card class="product-card">
     <v-img :src="image" contain height="240" />
     <v-card-title>
       <router-link
@@ -90,3 +90,6 @@ const addCart = async () => {
   }
 }
 </script>
+
+<style>
+</style>
