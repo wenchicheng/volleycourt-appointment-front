@@ -1,17 +1,21 @@
 <template>
   <div class="top-block"></div>
-  <div class="outline-all">
+  <div style="border: 2px solid rgb(4, 0, 255);">
     <v-container
-    class="h-100 d-flex justify-center align-center"
-    :style="{ width: getContainerWidth() }">
+      class="h-100 d-flex justify-center align-center"
+      :style="{ width: getContainerWidth() }"
+      style="border: 2px solid #bc3636;"
+    >
       <v-row>
         <v-col cols="12">
-            <h1 class="text-center mt-15 mb-5">所有商品</h1>
+          <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163);">所有商品</h1>
         </v-col>
-        <v-col v-for="product in products"
-        :key="product._id"
-        :cols="getCols()">
-        <ProductCard v-bind="product" />
+        <v-col
+          v-for="product in products"
+          :key="product._id"
+          :cols="getCols()"
+        >
+          <ProductCard v-bind="product" />
         </v-col>
       </v-row>
     </v-container>
@@ -61,29 +65,27 @@ onMounted(async () => {
 })
 
 // 設定container的寬度
-// const getContainerWidth = () => {
-//   const screenWidth = window.innerWidth
-//   if (screenWidth >= 1200) {
-//     return '70%'
-//   } else if (screenWidth >= 960) {
-//     return '80%'
-//   } else if (screenWidth >= 600) {
-//     return '85%'
-//   } else {
-//     return '90%'
-//   }
-// }
+const getContainerWidth = () => {
+  const screenWidth = window.innerWidth
+  if (screenWidth >= 1200) {
+    return '70%'
+  } else if (screenWidth >= 960) {
+    return '80%'
+  } else if (screenWidth >= 600) {
+    return '85%'
+  } else {
+    return '90%'
+  }
+}
 
 const getCols = () => {
   const screenWidth = window.innerWidth
-  if (screenWidth >= 1200) {
-    return 4 // xl
-  } else if (screenWidth >= 960) {
-    return 3 // lg
-  } else if (screenWidth >= 600) {
-    return 6 // md
+  if (screenWidth >= 800) {
+    return 4 // xl, 3 items per row
+  } else if (screenWidth >= 540) {
+    return 6 // lg, 2 items per row
   } else {
-    return 12 // sm
+    return 12 // sm, 1 item per row
   }
 }
 </script>
