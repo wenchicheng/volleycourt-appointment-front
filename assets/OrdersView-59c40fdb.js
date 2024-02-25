@@ -1,1 +1,0 @@
-import{ad as e,ai as a,aq as r,ak as t,an as s}from"./index-e30a2666.js";import{V as c}from"./VContainer-f01c952a.js";const n={},o=s("h1",null,"OrdersView",-1);function i(_,d){return a(),r(c,{class:"h-100 d-flex justify-center align-center"},{default:t(()=>[o]),_:1})}const u=e(n,[["render",i]]);export{u as default};
