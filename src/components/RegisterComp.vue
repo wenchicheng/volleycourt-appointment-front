@@ -6,7 +6,7 @@
       </v-col>
       <v-divider />
       <v-col cols="12">
-        <v-form :disabled="isSubmitting" @submit.prevent="submit">
+        <v-form :disabled="isSubmitting">
           <!--  @submit.prevent="submit" 送出時停止跳頁的預設動作，執行自訂的submit -->
           <v-text-field
             label="帳號"
@@ -48,6 +48,7 @@
 </template>
 
 <script setup>
+import { ref } from 'vue'
 import validator from 'validator'
 import { useForm, useField } from 'vee-validate'
 import * as yup from 'yup'
@@ -59,6 +60,13 @@ const { api } = useApi()
 
 const router = useRouter()
 const createSnackbar = useSnackbar()
+
+const dialog = ref(false)
+
+const closeDialog = () => {
+  dialog.value = false
+  resetForm()
+}
 
 // 定義註冊表單的資料格式
 const schema = yup.object({
@@ -93,8 +101,14 @@ const schema = yup.object({
     .oneOf([yup.ref('password')], '密碼不一致')
 })
 
-const { handleSubmit, isSubmitting } = useForm({
-  validationSchema: schema
+const { handleSubmit, isSubmitting, resetForm } = useForm({
+  validationSchema: schema,
+  initialValues: {
+    account: '',
+    email: '',
+    password: '',
+    passwordConfirm: ''
+  }
 })
 
 const account = useField('account')
@@ -116,9 +130,10 @@ const submit = handleSubmit(async (values) => {
       snackbarProps: {
         timeout: 2000,
         color: 'green',
-        location: 'top'
+        location: 'bottom'
       }
     })
+    // closeDialog()
     router.push('/login')
     // 回到登入頁
   } catch (error) {
@@ -133,6 +148,9 @@ const submit = handleSubmit(async (values) => {
         location: 'bottom'
       }
     })
+  } finally {
+    closeDialog()
   }
 })
+
 </script>

@@ -37,11 +37,9 @@
               <v-window v-model="tab">
                 <v-window-item value="login">
                   <LoginComp></LoginComp>
-                  <!-- <v-btn color="blue-grey-lighten-4" @click="dialog = false" class="w-100">關閉</v-btn> -->
                 </v-window-item>
                 <v-window-item value="register">
                   <RegisterComp></RegisterComp>
-                  <!-- <v-btn color="blue-grey-lighten-4" @click="dialog = false" class="w-100">關閉</v-btn> -->
                 </v-window-item>
               </v-window>
             </v-card-text>
@@ -49,12 +47,7 @@
           </v-dialog>
         </v-btn>
       </div>
-      <!-- <div class="d-flex justify-center mt-2 mb-4">
-        <v-btn to="/register" v-if="!user.isLogin"
-        class="d-flex align-center justify-center register">
-        註冊
-        </v-btn>
-      </div> -->
+
       <div class="d-flex justify-center mt-2 mb-4">
         <v-btn @click="logout" v-if="user.isLogin"
         class="d-flex align-center justify-center logout">
@@ -63,7 +56,7 @@
       </div>
     </v-list>
   </v-navigation-drawer>
-
+<!-- LOGO---------------------------------------------- -->
   <v-app-bar
   :elevation="0"
   :class="{ 'navbar': isScrolled }"
@@ -75,9 +68,9 @@
           <img src="@/assets/logo-05.png" alt="一起來打排" class="bar-logo">
         </v-app-bar-title>
       </router-link>
-      <!-- <v-spacer></v-spacer> -->
+
     </v-container>
-      <!-- 導航按鈕 -->
+      <!-- 導航按鈕------------------------------------ -->
       <v-app-bar-nav-icon @click="drawer = true" class="menu-btn"></v-app-bar-nav-icon>
   </v-app-bar>
 
@@ -89,7 +82,7 @@
 
 <script setup>
 // import { useDisplay } from 'vuetify'
-import { ref, computed } from 'vue'
+import { ref, computed, onBeforeUnmount } from 'vue'
 // import LoginView from '@/views/front/LoginView.vue'
 import RegisterComp from '@/components/RegisterComp.vue'
 import LoginComp from '@/components/LoginComp.vue'
@@ -98,9 +91,6 @@ import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useRouter } from 'vue-router'
 // router 跳頁 / route 取資料，useRouter 跳頁導航，而 useRoute 獲取當前這頁的資訊
-
-// 對話框預設關閉
-const dialog = ref(false)
 
 const { apiAuth } = useApi()
 const createSnackbar = useSnackbar()
@@ -112,8 +102,17 @@ const user = useUserStore()
 // const { mobile } = useDisplay()
 // const isMobile = computed(() => mobile.value)
 
+// 對話框=====================================
+// 預設關閉
+const dialog = ref(false)
 const tab = ref('login')
 // ref() 會回傳一個響應式的物件，並且會自動將 tab 的值轉換為響應式的資料，這樣當 tab 的值改變時，會自動重新渲染頁面
+
+const dialogVisible = ref(false)
+
+const handleRegistrationSuccess = () => {
+  dialogVisible.value = false
+}
 
 // 導覽列項目==================================
 const navItems = computed(() => {
@@ -145,13 +144,15 @@ const handleScroll = () => {
 window.addEventListener('scroll', handleScroll)
 
 // 在組件被卸載前，移除滾動事件監聽器
-const beforeUnmount = () => {
+onBeforeUnmount(() => {
   window.removeEventListener('scroll', handleScroll)
-}
+})
 
 // Drawer  =================================
 const drawer = ref(false)
 // const drawerWidth = 500
+
+// 註冊========================================
 
 // 登出========================================
 const logout = async () => {
@@ -184,6 +185,7 @@ const logout = async () => {
     })
   }
 }
+
 </script>
 
 <style scoped>

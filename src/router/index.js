@@ -98,16 +98,16 @@ const routes = [
           admin: false
         }
       },
-      {
-        path: 'register',
-        name: 'Register',
-        component: () => import('@/views/front/RegisterView.vue'),
-        meta: {
-          title: '一起來打排 | 註冊',
-          login: false,
-          admin: false
-        }
-      },
+      // {
+      //   path: 'register',
+      //   name: 'Register',
+      //   component: () => import('@/views/front/RegisterView.vue'),
+      //   meta: {
+      //     title: '一起來打排 | 註冊',
+      //     login: false,
+      //     admin: false
+      //   }
+      // },
       {
         path: 'login',
         name: 'Login',

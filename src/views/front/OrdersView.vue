@@ -46,6 +46,7 @@ const headers = [
   {
     title: '金額',
     key: 'price',
+    sortable: false,
     value: (item) => {
       return item.cart.reduce((total, current) => {
         return total + current.quantity * current.product.price

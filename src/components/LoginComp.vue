@@ -8,14 +8,6 @@
       <v-col cols="12">
         <v-form :disabled="isSubmitting" @submit.prevent="submit">
           <!--  @submit.prevent="submit" 送出時停止跳頁的預設動作，執行自訂的submit -->
-          <!-- <v-text-field
-            label="帳號"
-            minlength="4"
-            maxlength="20"
-            counter
-            v-model="account.value.value"
-            :error-messages="account.errorMessage.value"
-          /> -->
           <v-text-field
             label="信箱"
             type="email"
@@ -32,7 +24,7 @@
             :error-messages="password.errorMessage.value"
           />
 
-          <v-btn type="submit" color="green" @click="dialog = false" class="w-100">登入</v-btn>
+          <v-btn type="submit" color="green" class="w-100">登入</v-btn>
         </v-form>
       </v-col>
     </v-row>
