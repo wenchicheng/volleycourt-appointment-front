@@ -28,8 +28,6 @@
 // const createSnackbar = useSnackbar()
 // const router = useRouter()
 
-// 定義元件有哪些可以接收的資料
-// const props = defineProps(['_id', 'category', 'description', 'image', 'name', 'price', 'sell'])
 const props = defineProps({
   _id: {
     type: String,

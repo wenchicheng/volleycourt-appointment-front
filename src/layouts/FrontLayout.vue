@@ -118,7 +118,7 @@ const handleRegistrationSuccess = () => {
 const navItems = computed(() => {
   return [
     { to: '/about', text: '場館介紹', show: true },
-    { to: '/news', text: '最新消息', show: true },
+    // { to: '/news', text: '最新消息', show: true },
     { to: '/appointment', text: '預約報名', show: true },
     { to: '/reservation', text: '我的預約', show: user.isLogin },
     { to: '/shop', text: '排球選物', show: true },

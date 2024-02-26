@@ -39,9 +39,19 @@ const routes = [
         }
       },
       {
-        path: 'reservation',
-        name: 'Reservation',
-        component: () => import('@/views/front/ReservationView.vue'),
+        path: 'check',
+        name: 'Check',
+        component: () => import('@/views/front/CheckView.vue'),
+        meta: {
+          title: '一起來打排 | 確認預約',
+          login: true,
+          admin: false
+        }
+      },
+      {
+        path: 'reservations',
+        name: 'Reservations',
+        component: () => import('@/views/front/ReservationsView.vue'),
         meta: {
           title: '一起來打排 | 我的預約',
           login: true,
@@ -145,9 +155,9 @@ const routes = [
         }
       },
       {
-        path: 'appointorders',
-        name: 'AdminAppointorders',
-        component: () => import('@/views/admin/AppointordersView.vue'),
+        path: 'reservationorders',
+        name: 'ReservationOrders',
+        component: () => import('@/views/admin/ReservationOrdersView.vue'),
         meta: {
           title: '一起來打排 | 預約管理',
           login: true,

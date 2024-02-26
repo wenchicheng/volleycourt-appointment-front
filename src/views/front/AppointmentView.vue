@@ -10,21 +10,51 @@
         <v-col cols="12">
           <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163);">預約報名</h1>
         </v-col>
+        <!-- STEP 1 ---------------------------------------------------->
+        <v-col cols="12" style="padding-bottom: 0;">
+          <h2 style="color: rgb(26, 108, 163); display: inline-block;">Step 1</h2>
+        </v-col>
         <v-col cols="12">
           <v-expansion-panels
             v-model="panel"
-            :readonly="readonly"
             multiple
+            class="panels"
           >
             <v-expansion-panel>
-              <v-expansion-panel-title>Panel 1</v-expansion-panel-title>
+              <v-expansion-panel-title class="panel-title">
+                <h2>報名前務必詳讀注意事項（點擊展開）</h2>
+              </v-expansion-panel-title>
               <v-expansion-panel-text>
-                A
+                <h3 class="" style="display: inline-block;">
+                  1. 請先登入，再選擇想參加的場次訂位報名。<br>
+                  <v-divider class="my-2"></v-divider>
+                  2. 報名完成後可於「我的預約」查看報名狀態及取消報名。<br>
+                  <v-divider class="my-2"></v-divider>
+                  3. 報名成功後，未在場次開始前12小時取消報名而未到場者，將暫停該帳號之報名權限。<br>
+                </h3>
               </v-expansion-panel-text>
             </v-expansion-panel>
           </v-expansion-panels>
         </v-col>
-        <v-col cols="12">
+        <!-- STEP 2 ---------------------------------------------------->
+        <v-col cols="12" style="padding-bottom: 0;">
+          <h2 style="color: rgb(26, 108, 163); display: inline-block;">Step 2</h2>
+        </v-col>
+        <v-col cols="12" style="padding-bottom: 0;">
+          <v-expansion-panels
+            :readonly="readonly"
+            multiple
+            class="panels"
+          >
+            <v-expansion-panel>
+              <v-expansion-panel-title class="panel-title">
+                <h2>點選日期後請往下滑，查看當日場次</h2>
+              </v-expansion-panel-title>
+              <v-expansion-panel-text></v-expansion-panel-text>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
+        <v-col cols="12" style="padding-top: 0;">
           <v-date-picker
           width="100%"
           elevation="0"
@@ -34,6 +64,25 @@
           @update:model-value="getAppointment"
           ></v-date-picker>
         </v-col>
+        <!-- STEP 3 ---------------------------------------------------->
+        <v-col cols="12" style="padding-bottom: 0;">
+          <h2 style="color: rgb(26, 108, 163); display: inline-block;">Step 3</h2>
+        </v-col>
+        <v-col cols="12">
+          <v-expansion-panels
+            :readonly="readonly"
+            multiple
+            class="panels"
+          >
+            <v-expansion-panel>
+              <v-expansion-panel-title class="panel-title">
+                <h2>選擇以下想參加的場次按下「預約」確認報名（若無場次則不會顯示於下方）</h2>
+              </v-expansion-panel-title>
+              <v-expansion-panel-text></v-expansion-panel-text>
+            </v-expansion-panel>
+          </v-expansion-panels>
+        </v-col>
+        <!-- 時段------------------------------------------- -->
         <v-col v-for="appointment in appointments"
           :key="appointment._id"
           :cols="getCols()"
@@ -75,7 +124,6 @@
 import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
-// import AppointCard from '@/components/AppointCard.vue'
 import { date } from 'yup'
 
 const { api } = useApi()
@@ -158,12 +206,21 @@ width: 100%;
 height: 64px;
 /* background-color: #fff; */
 }
+::v-deep .v-expansion-panel__shadow {
+  box-shadow: none !important;
+}
+.panel-title{
+  line-height: 2rem;
+  background-color: rgba(110, 171, 217,1);
+  color: white;
+}
 .appointment-card {
   /* margin: 8px; */
   /* padding: 8px; */
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow:none;
-  background-color:rgb(190, 217, 237) ;
+  background-color:white ;
+  /* background-color:rgb(190, 217, 237) ; */
 
 }
 
@@ -189,7 +246,8 @@ height: 64px;
 }
 
 .chip{
-  background-color: rgb(190, 217, 237);
+  background-color: white;
+  /* background-color: rgb(190, 217, 237); */
   border: 2px solid rgba(110, 171, 217,1);
   color: rgb(78, 141, 189);
   font-weight: 600;
