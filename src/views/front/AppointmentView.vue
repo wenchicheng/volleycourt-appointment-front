@@ -195,6 +195,41 @@ const getAppointment = async () => {
   }
 }
 
+// 預約===================================
+const reserve = async () => {
+  if (!user.isLogin) {
+    router.push('/shop')
+    return
+  }
+  try {
+    const { data } = await apiAuth.patch('/users/reservation', {
+      appointment: props._id,
+      quantity: 1
+    })
+    user.cart = data.result
+    createSnackbar({
+      text: '已放入購物車',
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'green',
+        location: 'bottom'
+      }
+    })
+  } catch (error) {
+    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
+    createSnackbar({
+      text,
+      showCloseButton: false,
+      snackbarProps: {
+        timeout: 2000,
+        color: 'red',
+        location: 'bottom'
+      }
+    })
+  }
+}
+
 </script>
 
 <style scoped>

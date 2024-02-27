@@ -90,6 +90,3 @@ const addCart = async () => {
   }
 }
 </script>
-
-<style>
-</style>
