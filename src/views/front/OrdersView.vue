@@ -26,15 +26,15 @@
       </v-row>
     </v-container>
   </div>
-  <div style="width: 100%;height: 150px;"></div>
-  <FooterComp></FooterComp>
+  <!-- <div style="width: 100%;height: 150px;"></div> -->
+  <!-- <FooterComp></FooterComp> -->
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue'
 import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
-import FooterComp from '@/components/FooterComp.vue'
+// import FooterComp from '@/components/FooterComp.vue'
 
 const { apiAuth } = useApi()
 const createSnackbar = useSnackbar()
