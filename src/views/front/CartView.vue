@@ -7,7 +7,7 @@
       >
       <v-row class="row">
         <v-col cols="12">
-          <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163);">購物車</h1>
+          <h1 class="text-center mt-15 mb-5" style="color: rgb(70, 70, 70);">購物車</h1>
         </v-col>
         <v-col cols="12">
           <v-data-table :items="cart" :headers="headers">
@@ -36,6 +36,7 @@
       </v-row>
     </v-container>
   </div>
+<FooterComp></FooterComp>
 </template>
 
 <script setup>
@@ -44,6 +45,7 @@ import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useUserStore } from '@/store/user'
 import { useRouter } from 'vue-router'
+import FooterComp from '@/components/FooterComp.vue'
 
 const { apiAuth } = useApi()
 const createSnackbar = useSnackbar()
@@ -176,9 +178,6 @@ const getContainerWidth = () => {
 
 </script>
 <style scoped>
-.outline-all * {
-  outline: 1px solid #e06969;
-}
 
 .top-block{
 width: 100%;

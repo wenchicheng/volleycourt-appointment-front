@@ -7,7 +7,7 @@
     >
       <v-row>
         <v-col cols="12">
-          <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163);">訂單</h1>
+          <h1 class="text-center mt-15 mb-5" style="color: rgb(70, 70, 70);">訂單</h1>
         </v-col>
         <v-col>
           <v-data-table :items="reservations" :headers="headers">
@@ -72,10 +72,6 @@ const getContainerWidth = () => {
 </script>
 
 <style scoped>
-.outline-all * {
-  outline: 1px solid #e06969;
-}
-
 .top-block{
 width: 100%;
 height: 64px;

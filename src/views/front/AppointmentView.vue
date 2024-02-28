@@ -7,7 +7,7 @@
     >
       <v-row>
         <v-col cols="12">
-          <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163)">
+          <h1 class="text-center mt-15 mb-5" style="color: rgb(70,70, 70)">
             預約報名
           </h1>
         </v-col>
@@ -24,7 +24,7 @@
                 <h2>報名前務必詳讀注意事項（點擊展開）</h2>
               </v-expansion-panel-title>
               <v-expansion-panel-text>
-                <h3 class="" style="display: inline-block">
+                <h3 style="display: inline-block">
                   1. 請先登入，再選擇想參加的場次訂位報名。<br />
                   <v-divider class="my-2"></v-divider>
                   2. 報名完成後可於「我的預約」查看報名狀態及取消報名。<br />
@@ -237,11 +237,14 @@
       </v-dialog>
     </v-container>
   </div>
+  <div style="width: 100%;height: 150px;"></div>
+  <FooterComp></FooterComp>
 </template>
 
 <script setup>
-import { ref, onMounted, computed, nextTick, defineProps } from 'vue'
+import { ref, onMounted, computed, nextTick } from 'vue'
 import { useApi } from '@/composables/axios'
+import FooterComp from '@/components/FooterComp.vue'
 import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
 // import { date } from 'yup'
@@ -261,14 +264,6 @@ const dialog = ref(false)
 const { apiAuth } = useApi()
 const user = useUserStore()
 const router = useRouter()
-
-// 定義 appointment 屬性
-// const props = defineProps({
-//   appointment: {
-//     type: Object,
-//     required: true
-//   }
-// })
 
 // 把頁面上的資料取出來，在onMounted的時候才可以抓到頁面上DOM元素
 onMounted(async () => {
@@ -429,9 +424,6 @@ onMounted(async () => {
 </script>
 
 <style scoped>
-.outline-all * {
-  outline: 1px solid #e06969;
-}
 .top-block {
   width: 100%;
   height: 64px;

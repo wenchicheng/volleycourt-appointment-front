@@ -23,7 +23,7 @@
           v-model="dialog"
           transition="dialog-top-transition"
           width="600">
-            <v-card>
+            <v-card rounded="xl">
             <v-tabs
               v-model="tab"
               color="rgb(26, 108, 163)"
@@ -65,7 +65,7 @@
     <v-container class="d-flex align-center">
       <router-link to="/">
         <v-app-bar-title>
-          <img src="@/assets/logo-05.png" alt="一起來打排" class="bar-logo">
+          <img src="@/assets/logo-07.png" alt="一起來打排" class="bar-logo">
         </v-app-bar-title>
       </router-link>
 
@@ -78,10 +78,11 @@
     <RouterView :key="$route.path"></RouterView>
     <!-- route 取資訊，router 操作 -->
   </v-main>
+
 </template>
 
 <script setup>
-import { useDisplay } from 'vuetify'
+// import { useDisplay } from 'vuetify'
 import { ref, computed, onBeforeUnmount } from 'vue'
 // import LoginView from '@/views/front/LoginView.vue'
 import RegisterComp from '@/components/RegisterComp.vue'
@@ -99,8 +100,8 @@ const router = useRouter()
 const user = useUserStore()
 
 // 手機版判斷
-const { mobile } = useDisplay()
-const isMobile = computed(() => mobile.value)
+// const { mobile } = useDisplay()
+// const isMobile = computed(() => mobile.value)
 
 // 對話框=====================================
 // 預設關閉
@@ -108,11 +109,11 @@ const dialog = ref(false)
 const tab = ref('login')
 // ref() 會回傳一個響應式的物件，並且會自動將 tab 的值轉換為響應式的資料，這樣當 tab 的值改變時，會自動重新渲染頁面
 
-const dialogVisible = ref(false)
+// const dialogVisible = ref(false)
 
-const handleRegistrationSuccess = () => {
-  dialogVisible.value = false
-}
+// const handleRegistrationSuccess = () => {
+//   dialogVisible.value = false
+// }
 
 // 導覽列項目==================================
 const navItems = computed(() => {
@@ -199,12 +200,17 @@ const logout = async () => {
   font-weight: 600;
   border-bottom: 2px solid rgb(110, 171, 217);
   position: fixed;
-  transform: translateY(-100%);
+  transform: translateY(-30%);
   transition: transform 1s ease-in-out;
 }
 
+.slide-down{
+  transition: background-color 0.5s ease;
+}
+
 .bar-logo{
- height: 40px;
+  margin-top: 6px;
+  height: 40px;
 }
 .v-main::v-deep {
   /* 深度選擇器 */
@@ -245,12 +251,12 @@ const logout = async () => {
 }
 /* menu 清單項目最小高度 */
 .v-list-item--density-default.v-list-item--one-line {
-  min-height: 80px;
+  min-height: 60px;
   /* padding: 8px 20px; */
 }
 /* menu 字體大小 */
 .list-title {
-  font-size: 32px;
+  font-size: 24px;
 }
 /* menu 清單設定 */
 .v-list-item-title{
@@ -274,16 +280,16 @@ const logout = async () => {
   /* width: 10%; */
   height: 48px;
   font-size: 20px;
-  border-radius: 1.25rem; /* equivalent to 'xl' in Vuetify */
+  border-radius: 1rem;
   /* background-color: #BBDEFB; */
   box-shadow: none;
-  border: 2px solid rgba(110, 171, 217, 0.5);
+  /* border: 2px solid rgba(110, 171, 217, 0.5); */
 }
 .login:hover,
 .register:hover,
 .logout:hover{
-  background-color: rgba(110, 171, 217,1);
-  color: white;
+  background-color: #fbffbc;
+  color: black;
 
 }
 
@@ -292,15 +298,16 @@ const logout = async () => {
 .v-list-item--variant-outlined,
 .v-list-item--variant-text,
 .v-list-item--variant-tonal {
-    border-radius: 50%;
+    border-radius: 1rem;
     background: transparent;
-    color: inherit;
+    color: #fbffbc;
+
     /* transform: rotate(-7deg); */
 }
 
-.v-list-item--variant-outlined:active{
+/* .v-list-item--variant-outlined:active{
 
-}
+} */
 
 /* 購物車數量 */
 .badge {

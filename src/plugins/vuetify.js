@@ -19,12 +19,13 @@ export default createVuetify({
       light: {
         colors: {
           primary: 'rgba(110, 171, 217,1)',
-          secondary: 'rgb(250, 253, 255)',
+          secondary: 'rgb(224, 236, 246)',
           accent: 'rgb(26, 108, 163)',
           error: '#FF5252',
-          info: '#2196F3',
+          info: 'rgb(70,70, 70)',
           success: '#4CAF50',
-          warning: '#FFC107'
+          // warning: '#FFC107'
+          warning: '#fbffbc'
         }
       }
     }

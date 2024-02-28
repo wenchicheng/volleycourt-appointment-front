@@ -1,5 +1,10 @@
 <template>
 <div class="context">
+  <div class="">
+    <router-link to="/appointment">
+      <img src="@/assets/logo_1.png" alt="一起來打排" class="big-logo">
+    </router-link>
+  </div>
   <div class="overlay"></div>
   <swiper
     :spaceBetween="30"
@@ -34,7 +39,7 @@
 <script setup>
 // Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue'
-
+import { ref } from 'vue'
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -44,6 +49,7 @@ import 'swiper/css/effect-fade'
 // import required modules
 import { Navigation, Pagination, Autoplay, EffectFade } from 'swiper/modules'
 const modules = [Navigation, Pagination, Autoplay, EffectFade]
+
 </script>
 
 <style scoped>
@@ -74,6 +80,16 @@ const modules = [Navigation, Pagination, Autoplay, EffectFade]
   /* filter: brightness(0.8); */
 }
 
+.big-logo{
+  /* opacity: 50%; */
+  width: 60%;
+  position: fixed;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+}
+
 .overlay {
   width: 100%;
   height: 100%;
@@ -81,7 +97,7 @@ const modules = [Navigation, Pagination, Autoplay, EffectFade]
   opacity: .6;
   background-color: #191e28;
   mix-blend-mode:multiply;
-  z-index: 1000;
+  z-index: 950;
   /* background-image: radial-gradient(#000 20%, transparent 10%), radial-gradient(#000 20%, transparent 10%); */
   /* background-size: 3px 3px;
   background-position: 0 0, 1.5px 1.5px;

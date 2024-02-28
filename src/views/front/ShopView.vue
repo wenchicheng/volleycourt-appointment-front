@@ -7,7 +7,7 @@
     >
       <v-row>
         <v-col cols="12">
-          <h1 class="text-center mt-15 mb-5" style="color: rgb(26, 108, 163);">所有商品</h1>
+          <h1 class="text-center mt-15 mb-5" style="color: rgb(70,70, 70);">所有商品</h1>
         </v-col>
         <v-col
           v-for="product in products"
@@ -19,7 +19,8 @@
       </v-row>
     </v-container>
   </div>
-
+  <div style="width: 100%;height: 150px;"></div>
+  <FooterComp></FooterComp>
 </template>
 
 <script setup>
@@ -27,6 +28,7 @@ import { ref, onMounted, nextTick } from 'vue'
 import { useApi } from '@/composables/axios'
 import { useSnackbar } from 'vuetify-use-dialog'
 import ProductCard from '@/components/ProductCard.vue'
+import FooterComp from '@/components/FooterComp.vue'
 import gsap from 'gsap'
 
 const { api } = useApi()
@@ -90,10 +92,6 @@ const getCols = () => {
 </script>
 
 <style scoped>
-.outline-all * {
-  outline: 1px solid #e06969;
-}
-
 .top-block{
 width: 100%;
 height: 64px;

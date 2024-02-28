@@ -2,7 +2,7 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1 class="text-center">登入</h1>
+        <h1 class="text-center" style="letter-spacing: 8px;">登入</h1>
       </v-col>
       <v-col cols="12">
         <v-form :disabled="isSubmitting" @submit.prevent="submit">

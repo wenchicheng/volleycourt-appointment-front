@@ -2,12 +2,11 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1>註冊</h1>
+        <h1 class="text-center" style="letter-spacing: 8px;">註冊</h1>
       </v-col>
-      <v-divider />
       <v-col cols="12">
-        <v-form :disabled="isSubmitting">
-          <!--  @submit.prevent="submit" 送出時停止跳頁的預設動作，執行自訂的submit -->
+        <v-form :disabled="isSubmitting" @submit.prevent="submit">
+          <!--   送出時停止跳頁的預設動作，執行自訂的submit -->
           <v-text-field
             label="帳號"
             minlength="4"
@@ -15,12 +14,16 @@
             counter
             v-model="account.value.value"
             :error-messages="account.errorMessage.value"
+            prepend-icon="mdi-account-outline"
+            variant="underlined"
           />
           <v-text-field
             label="信箱"
             type="email"
             v-model="email.value.value"
             :error-messages="email.errorMessage.value"
+            prepend-icon="mdi-email-outline"
+            variant="underlined"
           />
           <v-text-field
             label="密碼"
@@ -30,6 +33,8 @@
             counter
             v-model="password.value.value"
             :error-messages="password.errorMessage.value"
+            prepend-icon="mdi-lock-outline"
+            variant="underlined"
           />
           <v-text-field
             label="確認密碼"
@@ -39,8 +44,10 @@
             counter
             v-model="passwordConfirm.value.value"
             :error-messages="passwordConfirm.errorMessage.value"
+            prepend-icon="mdi-lock-outline"
+            variant="underlined"
           />
-          <v-btn type="submit" color="green" class="w-100">註冊</v-btn>
+          <v-btn type="submit" color="rgb(26, 108, 163)" class="w-100 mt-8" rounded="pill" variant="flat" height="2.5rem">註冊</v-btn>
         </v-form>
       </v-col>
     </v-row>
@@ -55,9 +62,11 @@ import * as yup from 'yup'
 import { useRouter } from 'vue-router'
 import { useSnackbar } from 'vuetify-use-dialog'
 import { useApi } from '@/composables/axios'
+import { useUserStore } from '@/store/user'
 
 const { api } = useApi()
 
+const userStore = useUserStore()
 const router = useRouter()
 const createSnackbar = useSnackbar()
 
@@ -133,8 +142,14 @@ const submit = handleSubmit(async (values) => {
         location: 'bottom'
       }
     })
+    // 註冊即登入
+    const { data } = await api.post('/users/login', {
+      email: values.email,
+      password: values.password
+    })
+    userStore.login(data.result)
     // closeDialog()
-    router.push('/login')
+    router.push('/')
     // 回到登入頁
   } catch (error) {
     console.log(error)

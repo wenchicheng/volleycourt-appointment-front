@@ -1,10 +1,9 @@
 <template>
   <div class="top-block"></div>
-  <div style="border: 2px solid rgb(4, 0, 255);">
+  <div>
     <v-container
     class="h-100 d-flex justify-center align-center"
       :style="{ width: getContainerWidth() }"
-      style="border: 2px solid #bc3636;"
     >
       <v-row>
         <v-col cols="12">
@@ -161,13 +160,10 @@ const getContainerWidth = () => {
 </script>
 
 <style scoped>
-.outline-all * {
-  outline: 1px solid #e06969;
-}
 
 .top-block{
 width: 100%;
-height: 64px;
+height: 130px;
 /* background-color: #fff; */
 }
 .mask{

@@ -3,7 +3,8 @@
     <v-img :src="image" contain height="240" />
     <v-card-title>
       <router-link
-      class="text-primary text-decoration-none"
+      class="text-decoration-none"
+      style="color: rgb(70,70, 70);"
       :to="'/products/' + _id">{{ name }}
       </router-link>
     </v-card-title>
