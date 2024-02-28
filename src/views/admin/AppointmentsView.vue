@@ -59,8 +59,12 @@
     </v-row>
     <v-dialog v-model="dialog" persistent width="600px">
       <v-form :disabled="isSubmitting" @submit.prevent="submit">
-        <v-card>
-          <v-card-title>{{ dialogId === '' ? '新增時段場次' : '編輯時段場次' }}</v-card-title>
+        <v-card style="padding:16px">
+          <v-card-title>
+            <h3 class="text-center">
+            {{ dialogId === '' ? '新增時段場次' : '編輯時段場次' }}
+            </h3>
+          </v-card-title>
           <v-card-text>
             <v-row>
               <v-col cols="12">
@@ -69,6 +73,8 @@
                   :items="courts"
                   v-model="court.value.value"
                   :error-messages="court.errorMessage.value"
+                  variant="outlined"
+                  elevation="0"
                 ></v-select>
               </v-col>
               <v-col cols="12" sm="12">
@@ -77,23 +83,8 @@
                   type="date"
                   v-model="date.value.value"
                   :error-messages="date.errorMessage.value"
+                  variant="outlined"
                 ></v-text-field>
-                <!-- :model-value="formattedDate"
-                  @input="value => handleDateInput(value,'begin')" -->
-
-                <!-- <v-menu v-model="menu"
-                :close-on-content-click="false"
-                transition="scale-transition"
-                min-width="290px">
-                  <template v-slot:activator="{ on, attrs }">
-                    <v-text-field v-model="date.value.value"
-                    label="選擇日期" prepend-icon="mdi-calendar"
-                    readonly v-bind="attrs"
-                    v-on="{ ...on, click: () => menu = true }"
-                  ></v-text-field>
-                  </template>
-                  <v-date-picker v-model="date.value.value" @input="menu = false"></v-date-picker>
-                </v-menu> -->
               </v-col>
               <v-col cols="12" sm="6">
                   <v-text-field
@@ -101,6 +92,7 @@
                     type="time"
                     v-model="begin.value.value"
                     :error-messages="begin.errorMessage.value"
+                    variant="outlined"
                   ></v-text-field>
                 </v-col>
                 <v-col cols="12" sm="6">
@@ -109,6 +101,7 @@
                     type="time"
                     v-model="end.value.value"
                     :error-messages="end.errorMessage.value"
+                    variant="outlined"
                   ></v-text-field>
                 </v-col>
               <v-col cols="12" sm="6">
@@ -117,6 +110,7 @@
                 type="number" min="0"
                 v-model="peoplenumber.value.value"
                 :error-messages="peoplenumber.errorMessage.value"
+                variant="outlined"
               ></v-text-field>
               </v-col>
               <v-col cols="12" sm="6">
@@ -125,6 +119,7 @@
                 :items="heights"
                 v-model="height.value.value"
                 :error-messages="height.errorMessage.value"
+                variant="outlined"
               ></v-select>
               </v-col>
               <v-col cols="12">
@@ -135,6 +130,7 @@
                   multiple
                   chips
                   :error-messages="info.errorMessage.value"
+                  variant="outlined"
                 ></v-select>
               </v-col>
               <v-checkbox

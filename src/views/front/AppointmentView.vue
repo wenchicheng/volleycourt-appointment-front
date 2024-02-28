@@ -87,7 +87,8 @@
           :key="appointment._id"
           :cols="getCols()"
           class="cards">
-          <v-card class="appointment-card">
+          <v-card class="appointment-card"
+          :appointment="appointment">
             <v-row>
               <!-- 左側佔三分之一 -->
               <v-col cols="8">
@@ -121,10 +122,12 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted, nextTick, defineProps } from 'vue'
 import { useApi } from '@/composables/axios'
+import { useUserStore } from '@/store/user'
 import { useSnackbar } from 'vuetify-use-dialog'
-import { date } from 'yup'
+// import { date } from 'yup'
+import { useRouter } from 'vue-router'
 
 const { api } = useApi()
 const createSnackbar = useSnackbar()
@@ -132,6 +135,18 @@ const createSnackbar = useSnackbar()
 const appointments = ref([])
 const selectedDate = ref()
 const panel = ref([])
+
+const { apiAuth } = useApi()
+const user = useUserStore()
+const router = useRouter()
+
+// 定義 appointment 屬性
+const props = defineProps({
+  appointment: {
+    type: Object,
+    required: true
+  }
+})
 
 // 把頁面上的資料取出來，在onMounted的時候才可以抓到頁面上DOM元素
 onMounted(async () => {
@@ -181,6 +196,7 @@ const getCols = () => {
   }
 }
 
+// 取得當日開放場次
 const getAppointment = async () => {
   try {
     const { data } = await api.get('/appointments/date/', {
@@ -195,10 +211,11 @@ const getAppointment = async () => {
   }
 }
 
-// 預約===================================
+// 預約============================================
 const reserve = async () => {
+  console.log('reserve99')
   if (!user.isLogin) {
-    router.push('/shop')
+    router.push('/login')
     return
   }
   try {
@@ -206,23 +223,25 @@ const reserve = async () => {
       appointment: props._id,
       quantity: 1
     })
-    user.cart = data.result
+    user.reservation = data.result
+    console.log('data', data.result)
     createSnackbar({
-      text: '已放入購物車',
+      text: '進入預約確認',
       showCloseButton: false,
       snackbarProps: {
-        timeout: 2000,
+        timeout: 1500,
         color: 'green',
         location: 'bottom'
       }
     })
   } catch (error) {
-    const text = error?.response?.data?.message || '發生錯誤，請稍後再試'
+    console.log('預約錯誤', error)
+    const text = error?.response?.data?.message || '預約發生錯誤，請稍後再試'
     createSnackbar({
       text,
       showCloseButton: false,
       snackbarProps: {
-        timeout: 2000,
+        timeout: 1500,
         color: 'red',
         location: 'bottom'
       }

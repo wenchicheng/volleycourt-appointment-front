@@ -2,9 +2,8 @@
   <v-container>
     <v-row>
       <v-col cols="12">
-        <h1>登入</h1>
+        <h1 class="text-center">登入</h1>
       </v-col>
-      <v-divider />
       <v-col cols="12">
         <v-form :disabled="isSubmitting" @submit.prevent="submit">
           <!--  @submit.prevent="submit" 送出時停止跳頁的預設動作，執行自訂的submit -->
@@ -13,6 +12,8 @@
             type="email"
             v-model="email.value.value"
             :error-messages="email.errorMessage.value"
+            prepend-icon="mdi-email-outline"
+            variant="underlined"
           />
           <v-text-field
             label="密碼"
@@ -22,9 +23,13 @@
             counter
             v-model="password.value.value"
             :error-messages="password.errorMessage.value"
+            prepend-icon="mdi-lock-outline"
+            variant="underlined"
           />
 
-          <v-btn type="submit" color="green" class="w-100">登入</v-btn>
+          <v-btn type="submit"
+          color="rgb(26, 108, 163)" class="w-100 mt-8" rounded="pill" variant="flat" height="2.5rem">
+          登入</v-btn>
         </v-form>
       </v-col>
     </v-row>

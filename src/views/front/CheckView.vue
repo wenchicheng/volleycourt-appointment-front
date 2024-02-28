@@ -27,11 +27,93 @@
             </template>
           </v-data-table>
         </v-col>
-        <v-col class="text-center" cols="12">
-          <!-- <h2 class="mb-4">總金額: $ {{ total }} 元</h2> -->
+
+        <!--  -->
+        <v-col class="" cols="12">
+          <v-card
+            class="mx-auto pa-8"
+            max-width="500"
+            rounded="xl"
+          >
+            <v-card-item class="text-center">
+              <v-card-title>
+                <span class="text-h5">請再次確認以下內容</span>
+              </v-card-title>
+
+              <template v-slot:append>
+                <v-defaults-provider
+                  :defaults="{
+                    VBtn: {
+                      variant: 'text',
+                      density: 'comfortable',
+                    }
+                  }"
+                >
+                </v-defaults-provider>
+              </template>
+            </v-card-item>
+
+            <v-list class="overflow-hidden">
+              <v-row>
+                <v-col cols="6">
+                  <v-list-item
+                    prepend-icon="mdi-email"
+                    title="會員信箱"
+                  ></v-list-item>
+                </v-col>
+                <v-col cols="6"></v-col>
+
+                <v-divider></v-divider>
+
+                <v-col cols="6">
+                  <v-list-item
+                    prepend-icon="mdi-calendar"
+                    title="預約日期"
+                  ></v-list-item>
+                </v-col>
+                <v-col cols="6"></v-col>
+
+                <v-divider></v-divider>
+
+                <v-col cols="6">
+                  <v-list-item
+                    prepend-icon="mdi-clock"
+                    title="預約時間"
+                  ></v-list-item>
+                </v-col>
+                <v-col cols="6"></v-col>
+
+                <v-divider></v-divider>
+
+                <v-col cols="6">
+                  <v-list-item
+                    prepend-icon="mdi-map-marker"
+                    title="預約場地"
+                  ></v-list-item>
+                </v-col>
+                <v-col cols="6"></v-col>
+
+                <v-divider></v-divider>
+
+                <v-col cols="6">
+                  <v-list-item
+                    prepend-icon="mdi-account-multiple"
+                    title="預約人數"
+                  ></v-list-item>
+                </v-col>
+                <v-col cols="6"></v-col>
+              </v-row>
+            </v-list>
+
+            <!-- <v-img
+              cover
+              height="200"
+              src="../../assets/272666654_122129876996494_8320183482082203450_n.jpg"
+            ></v-img> -->
+          </v-card>
           <v-btn color="green" class="mb-4"
           :disabled="!canCheckout" :loading="isSubmitting" @click="checkout">
-          結帳</v-btn>
+          確認預約</v-btn>
         </v-col>
       </v-row>
     </v-container>
@@ -185,6 +267,10 @@ const getContainerWidth = () => {
 width: 100%;
 height: 64px;
 /* background-color: #fff; */
+}
+
+.bg-blue{
+  background-color: rgb(26, 108, 163);
 }
 
 @media screen and (max-width: 960px) {
