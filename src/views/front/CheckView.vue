@@ -259,9 +259,6 @@ const getContainerWidth = () => {
 
 </script>
 <style scoped>
-.outline-all * {
-  outline: 1px solid #e06969;
-}
 
 .top-block{
 width: 100%;
