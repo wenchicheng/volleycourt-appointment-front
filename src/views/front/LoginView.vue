@@ -16,5 +16,6 @@ import LoginComp from '@/components/LoginComp.vue'
 .dialog{
   background-color: white;
   border-radius: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
 }
 </style>

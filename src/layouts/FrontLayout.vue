@@ -59,7 +59,7 @@
 <!-- LOGO---------------------------------------------- -->
   <v-app-bar
   :elevation="0"
-  :class="{ 'navbar': isScrolled }"
+  :class="{ 'navbar': isScrolled, 'slide-down': isScrolled }"
   :style="{ backgroundColor: isScrolled ? 'rgba(224, 236, 246, 1)' : 'rgba(224, 236, 246, 0)' }"
   >
     <v-container class="d-flex align-center">
@@ -81,7 +81,7 @@
 </template>
 
 <script setup>
-// import { useDisplay } from 'vuetify'
+import { useDisplay } from 'vuetify'
 import { ref, computed, onBeforeUnmount } from 'vue'
 // import LoginView from '@/views/front/LoginView.vue'
 import RegisterComp from '@/components/RegisterComp.vue'
@@ -99,8 +99,8 @@ const router = useRouter()
 const user = useUserStore()
 
 // 手機版判斷
-// const { mobile } = useDisplay()
-// const isMobile = computed(() => mobile.value)
+const { mobile } = useDisplay()
+const isMobile = computed(() => mobile.value)
 
 // 對話框=====================================
 // 預設關閉
@@ -120,7 +120,7 @@ const navItems = computed(() => {
     { to: '/about', text: '場館介紹', show: true },
     // { to: '/news', text: '最新消息', show: true },
     { to: '/appointment', text: '預約報名', show: true },
-    { to: '/reservation', text: '我的預約', show: user.isLogin },
+    // { to: '/reservation', text: '我的預約', show: user.isLogin },
     { to: '/shop', text: '排球選物', show: true },
     { to: '/cart', text: '購物車', icon: 'mdi-cart', show: user.isLogin },
     { to: '/orders', text: '我的訂單', icon: 'mdi-list', show: user.isLogin },
@@ -133,7 +133,7 @@ const isScrolled = ref(false)
 
 const handleScroll = () => {
   // 檢查滾動位置，根據需要添加或移除 'navbar' 類
-  if (window.scrollY > 100) {
+  if (window.scrollY > 64) {
     isScrolled.value = true
   } else {
     isScrolled.value = false
@@ -198,6 +198,9 @@ const logout = async () => {
   /* height: 64px; */
   font-weight: 600;
   border-bottom: 2px solid rgb(110, 171, 217);
+  position: fixed;
+  transform: translateY(-100%);
+  transition: transform 1s ease-in-out;
 }
 
 .bar-logo{
