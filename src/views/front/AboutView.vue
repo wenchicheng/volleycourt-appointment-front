@@ -36,16 +36,16 @@
                 </h2>
               </v-expansion-panel-title>
               <v-expansion-panel-text>
-                <h3 class="" style="display: inline-block">
-                  1. 排球網不可調整，如擅自調整造成設備/耗材損壞，租借人須照價賠償。<br />
+                <h3 class="block">
+                  1. 排球網不可自行調整，如擅自調整造成設備/耗材損壞，租借人須照價賠償。<br />
                   <v-divider class="my-2"></v-divider>
-                  2. 備有洗手間、製冰機(僅供冰敷)及飲水機。<br />
+                  2. 備有洗手間、製冰機 (僅供冰敷) 及飲水機。<br />
                   <v-divider class="my-2"></v-divider>
                   3. 合成橡膠地板。<br />
                   <v-divider class="my-2"></v-divider>
                   4. 單面球場入場人數上限20人。<br />
                   <v-divider class="my-2"></v-divider>
-                  5. 場館內禁任何飲食、飲料、吸菸、檳榔、口香糖等行為(白開水除外)。<br />
+                  5. 場館內禁任何飲食、飲料、吸菸、檳榔、口香糖等行為 (白開水除外)。<br />
                   <v-divider class="my-2"></v-divider>
                   6. 入場須穿運動鞋，嚴禁穿著高跟鞋、皮質鞋底之鞋款入場。<br />
                   <v-divider class="my-2"></v-divider>
@@ -67,9 +67,10 @@
                 </h2>
               </v-expansion-panel-title>
               <v-expansion-panel-text>
-                <h3 class="" style="display: inline-block">
-                  點選確認租借至完成租借，因系統作業需時，請稍待，勿重複點選確認，避免重複出現租借紀錄。
-                  租借場地至少需連續兩小時以上。
+                <h3 class="block">
+                  1. 點選確認租借至完成租借，因系統作業需時請稍待，勿重複點選確認，避免重複出現租借紀錄。
+                  <v-divider class="my-2"></v-divider>
+                  2. 租借場地一次時段預約人數預設為「1人」，若有其他同行者欲報名請另登入。
                 </h3>
               </v-expansion-panel-text>
             </v-expansion-panel>
@@ -90,7 +91,7 @@
                 </h2>
               </v-expansion-panel-title>
               <v-expansion-panel-text>
-                <h3 class="" style="display: inline-block">
+                <h3 class="block">
                   Step 1. 請先登入，至「預約報名」選擇想參加的場次訂位報名。<br />
                   <v-divider class="my-2"></v-divider>
                   Step 2. 報名完成後可於「我的預約」查看報名狀態及取消報名。<br />
@@ -169,5 +170,8 @@ const getContainerWidth = () => {
   line-height: 1rem;
   background-color: rgba(110, 171, 217, 1);
   color: white;
+}
+.block {
+  display: block;
 }
 </style>
