@@ -20,6 +20,7 @@
     "swiper": "^11.0.6",
     "validator": "^13.11.0",
     "vee-validate": "^4.12.5",
+    "vite-plugin-radar": "^0.9.4",
     "vue": "^3.2.0",
     "vue-router": "^4.0.0",
     "vuetify": "^3.0.0",

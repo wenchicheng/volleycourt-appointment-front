@@ -3,6 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import vuetify, { transformAssetUrls } from 'vite-plugin-vuetify'
 import ViteFonts from 'unplugin-fonts/vite'
 import VueDevTools from 'vite-plugin-vue-devtools'
+import { VitePluginRadar } from 'vite-plugin-radar'
 
 // Utilities
 import { defineConfig } from 'vite'
@@ -27,7 +28,13 @@ export default defineConfig({
         }]
       }
     }),
-    VueDevTools()
+    VueDevTools(),
+    VitePluginRadar({
+      // Google Analytics tag injection
+      analytics: {
+        id: 'G-QFRRB9MVX4'
+      }
+    })
   ],
   define: { 'process.env': {} },
   resolve: {
