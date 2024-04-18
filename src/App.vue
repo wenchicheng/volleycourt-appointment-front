@@ -23,7 +23,6 @@
 
 <script>
 import { ref, onMounted, onUnmounted } from 'vue'
-import gsap from 'gsap'
 
 export default {
   setup () {
@@ -44,14 +43,19 @@ export default {
 
     // 設置滑鼠效果
     onMounted(() => {
-      initCircles()
-      mouseMoveListener = (event) => {
-        circles.value.forEach(circle => {
-          circle.x = event.clientX
-          circle.y = event.clientY
-        })
+      // 检查设备是否为平板
+      const isTablet = window.matchMedia('(max-width: 1024px)').matches
+
+      if (!isTablet) {
+        initCircles()
+        mouseMoveListener = (event) => {
+          circles.value.forEach(circle => {
+            circle.x = event.clientX
+            circle.y = event.clientY
+          })
+        }
+        document.addEventListener('pointermove', mouseMoveListener)
       }
-      document.addEventListener('pointermove', mouseMoveListener)
     })
 
     // 移除滑鼠效果
