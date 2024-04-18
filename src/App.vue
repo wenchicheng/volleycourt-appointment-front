@@ -44,7 +44,7 @@ export default {
     // 設置滑鼠效果
     onMounted(() => {
       // 检查设备是否为平板
-      const isTablet = window.matchMedia('(max-width: 1024px)').matches
+      const isTablet = window.matchMedia('(max-width: 1000px)').matches
 
       if (!isTablet) {
         initCircles()
