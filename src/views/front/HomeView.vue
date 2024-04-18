@@ -9,7 +9,7 @@
   <swiper
     :spaceBetween="30"
     :effect="'fade'"
-    :navigation="true"
+    :navigation="false"
     :modules="modules"
     :autoplay="{
       delay: 5000,
